@@ -9,6 +9,7 @@ User={{ user }}
 Group={{ group }}
 ExecReload=/bin/kill -HUP
 ExecStart=/usr/local/bin/node_exporter --web.listen-address=:{{ port }} {% if enable_systemd_collector is defined and enable_systemd_collector is sameas true %}--collector.systemd{% endif %}
+
 SyslogIdentifier=node_exporter
 Restart=on-failure
 RestartSec=10s
