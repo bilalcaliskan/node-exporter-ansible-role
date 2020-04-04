@@ -10,5 +10,6 @@ exporter_port: 9100
 enable_systemd_collector: true
 user: prometheus
 group: prometheus
+empty_var: true
 
 ...
