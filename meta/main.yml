@@ -7,7 +7,8 @@ galaxy_info:
   min_ansible_version: 2.6
   galaxy_tags:
     - configuration
-    - node_exporter
+    - prometheus
+    - exporter
     - monitoring
   license: "license (BSD, MIT)"
   platforms:
