@@ -40,6 +40,17 @@ None
         user: prometheus
         group: prometheus
 
+## Playbook for uninstall
+
+      - hosts: all
+        become: true
+        roles:
+          - { role: bilalcaliskan.node_exporter }
+
+*Inside `vars/main.yml`*:
+
+        install_node_exporter: false
+
 ## License
 
 MIT / BSD

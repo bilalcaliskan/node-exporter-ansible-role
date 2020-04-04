@@ -5,7 +5,7 @@ services: docker
 
 env:
   global:
-    - ROLE_NAME: kafka
+    - ROLE_NAME: node_exporter
     - USER_NAME: bilalcaliskan
   matrix:
     - MOLECULE_DISTRO: centos7
