@@ -25,6 +25,8 @@ None
 
       - hosts: all
         become: true
+        vars_files:
+          - vars/main.yml
         roles:
           - { role: bilalcaliskan.node_exporter }
 
@@ -44,6 +46,8 @@ None
 
       - hosts: all
         become: true
+        vars_files:
+          - vars/main.yml
         roles:
           - { role: bilalcaliskan.node_exporter }
 
