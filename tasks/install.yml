@@ -11,6 +11,11 @@
     shell: /sbin/nologin
     group: "{{ group }}"
 
+- name: Ensure firewalld is installed
+  package:
+    name: firewalld
+    state: present
+
 - name: Check if tar file exists
   stat:
     path: "{{ file_path }}"
