@@ -1,61 +1,11 @@
 ---
 
-- name: Ensure prometheus group exists
-  group:
-    name: "{{ group }}"
-    state: present
+- name: Include install.yml file conditionally
+  include_tasks: install.yml
+  when: (install_node_exporter | bool)
 
-- name: Ensure prometheus user exists
-  user:
-    name: "{{ user }}"
-    shell: /sbin/nologin
-    group: "{{ group }}"
+- name: Include uninstall.yml file
+  include_tasks: uninstall.yml
+  when: not (install_node_exporter | bool)
 
-- name: Download tar.gz file
-  get_url:
-    url: "{{ download_url }}"
-    dest: "{{ base_dir_path }}"
-    owner: "{{ user }}"
-    group: "{{ group }}"
-    mode: 0644
-
-- name: Extract tar.gz file
-  unarchive:
-    src: "{{ file_path }}"
-    dest: "{{ base_dir_path }}"
-    owner: prometheus
-    group: prometheus
-    remote_src: yes
-
-- name: Create a symlink of node_exporter binary
-  file:
-    src: "{{ folder_path }}/node_exporter"
-    dest: /usr/local/bin/node_exporter
-    owner: "{{ user }}"
-    group: "{{ group }}"
-    state: link
-
-- name: Transfer template files to the remote host
-  template:
-    src: "{{ item.src_path }}"
-    dest: "{{ item.dest_path }}"
-    owner: root
-    group: root
-    mode: 0644
-  loop:
-    - { src_path: "node-exporter.xml.j2", dest_path: "/etc/firewalld/services/node-exporter.xml" }
-    - { src_path: "node-exporter.service.j2", dest_path: "/etc/systemd/system/node-exporter.service" }
-
-- name: Ensure firewalld is reloaded
-  service:
-    name: firewalld
-    state: reloaded
-    enabled: yes
-
-- name: Manage firewalld configuration
-  firewalld:
-    service: node-exporter
-    permanent: yes
-    state: enabled
-    immediate: yes
-  notify: start and enable node-exporter
+...
