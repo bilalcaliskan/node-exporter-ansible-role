@@ -59,6 +59,7 @@
     owner: root
     group: root
     mode: 0644
+  notify: start and enable node-exporter
 
 - name: Ensure firewalld is started and enabled
   service:
@@ -73,6 +74,5 @@
     permanent: true
     state: enabled
     immediate: true
-  notify: start and enable node-exporter
 
 ...
