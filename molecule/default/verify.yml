@@ -3,10 +3,10 @@
 - name: Verify play
   hosts: all
   tasks:
-    - name: Ensure node-exporter port {{ exporter_port }} is reachable
+    - name: Ensure node-exporter port is reachable
       wait_for:
         host: localhost
-        port: "{{ exporter_port }}"
+        port: 9100
         timeout: 5
 
 ...
