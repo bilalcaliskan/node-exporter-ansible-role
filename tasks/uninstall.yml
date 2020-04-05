@@ -37,6 +37,10 @@
       user:
         name: "{{ user }}"
         state: absent
+
+    - name: Set fact after uninstallation
+      set_fact:
+        node_exporter_installed: false
   when: ansible_facts.services["node-exporter.service"] is defined
 
 ...

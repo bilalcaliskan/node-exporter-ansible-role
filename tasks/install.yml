@@ -1,5 +1,13 @@
 ---
 
+- name: Get service facts
+  service_facts:
+
+- name: Set fact before installation
+  set_fact:
+    node_exporter_installed: false
+  when: ansible_facts.services["node-exporter.service"] is not defined
+
 - name: Ensure prometheus group exists
   group:
     name: "{{ group }}"
@@ -11,9 +19,9 @@
     shell: /sbin/nologin
     group: "{{ group }}"
 
-- name: Ensure firewalld is installed
+- name: Ensure required packages are installed
   package:
-    name: firewalld
+    name: "{{ required_packages }}"
     state: present
 
 - name: Check if tar file exists
@@ -74,5 +82,10 @@
     permanent: true
     state: enabled
     immediate: true
+
+- name: Set fact after installation
+  set_fact:
+    node_exporter_installed: true
+  when: ansible_facts.services["node-exporter.service"] is defined
 
 ...
