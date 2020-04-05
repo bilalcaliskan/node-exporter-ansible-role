@@ -1,6 +1,6 @@
 ## Node Exporter Ansible Role
 
-[![Build Status](https://travis-ci.org/bilalcaliskan/node-exporter-ansible-role.svg?branch=master)](https://travis-ci.org/bilalcaliskan/node-exporter-ansible-role)
+[![Build Status](https://travis-ci.org/bilalcaliskan/node_exporter-ansible-role.svg?branch=master)](https://travis-ci.org/bilalcaliskan/node_exporter-ansible-role)
 
 Installs and configures node-exporter daemon on RHEL/CentOS 7/8 instances.
 
