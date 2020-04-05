@@ -8,8 +8,8 @@ file_path: "{{ base_dir_path }}/node_exporter-{{ version }}.linux-amd64.tar.gz"
 folder_path: "{{ base_dir_path }}/node_exporter-{{ version }}.linux-amd64"
 exporter_port: 9100
 enable_systemd_collector: true
-user: prometheus
-group: prometheus
+user: node-exporter
+group: node-exporter
 required_packages:
   - firewalld
   - vim

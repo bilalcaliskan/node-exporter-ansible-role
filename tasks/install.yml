@@ -8,12 +8,12 @@
     node_exporter_installed: false
   when: ansible_facts.services["node-exporter.service"] is not defined
 
-- name: Ensure prometheus group exists
+- name: Ensure {{ group }} group exists
   group:
     name: "{{ group }}"
     state: present
 
-- name: Ensure prometheus user exists
+- name: Ensure {{ user }} user exists
   user:
     name: "{{ user }}"
     shell: /sbin/nologin
@@ -86,6 +86,5 @@
 - name: Set fact after installation
   set_fact:
     node_exporter_installed: true
-  when: ansible_facts.services["node-exporter.service"] is defined
 
 ...
