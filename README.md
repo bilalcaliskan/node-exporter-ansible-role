@@ -1,4 +1,4 @@
-## Kafka Ansible Role
+## Node Exporter Ansible Role
 
 [![Build Status](https://travis-ci.org/bilalcaliskan/node-exporter-ansible-role.svg?branch=master)](https://travis-ci.org/bilalcaliskan/node-exporter-ansible-role)
 
