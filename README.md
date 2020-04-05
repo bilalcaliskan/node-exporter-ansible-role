@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/bilalcaliskan/node_exporter-ansible-role.svg?branch=master)](https://travis-ci.org/bilalcaliskan/node_exporter-ansible-role)
 
-Installs and configures node-exporter daemon on RHEL/CentOS 7/8 instances.
+Installs and configures node-exporter to expose node metrics to Prometheus on RHEL/CentOS 7/8 instances.
 
 ## Requirements
 
@@ -39,8 +39,8 @@ None
         folder_path: "{{ base_dir_path }}/node_exporter-{{ version }}.linux-amd64"
         port: 9100
         enable_systemd_collector: true
-        user: prometheus
-        group: prometheus
+        user: node-exporter
+        group: node-exporter
 
 ## Playbook for uninstall
 
