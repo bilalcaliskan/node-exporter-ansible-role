@@ -6,55 +6,55 @@ Installs and configures node-exporter to expose node metrics to Prometheus on RH
 
 ## Requirements
 
-No special requirements; note that this role requires root access, so either run it in a playbook with a global `become: yes`, or invoke the role in your playbook like:
+No special requirements; note that this role requires root access, so either run it in a playbook with a global `become: true`, or invoke the role in your playbook like:
 
-      - hosts: all
-        become: true
-        roles:
-          - role: bilalcaliskan.node_exporter
+```yaml
+- hosts: all
+  become: true
+  roles:
+    - role: bilalcaliskan.node_exporter
+```
 
-## Role Variables
+### Role Variables
+See the default values in [defaults/main.yml](defaults/main.yml). You can overwrite them in [vars/main.yml](vars/main.yml) if neccessary or you can set them while running playbook.
 
-See the default values in 'defaults/main.yml'. You can overwrite them in 'vars/main.yml' if neccessary.
+> Please note that this role will ensure that `firewalld` systemd service on your servers are started and enabled by default. If you want to stop and disable `firewalld` service, please modify below variable as false when running playbook:  
+> ```yaml  
+> firewalld_enabled: false
 
 ## Dependencies
 
 None
 
-## Example Playbook
+### Example Playbook File For Installation
 
-      - hosts: all
-        become: true
-        vars_files:
-          - vars/main.yml
-        roles:
-          - { role: bilalcaliskan.node_exporter }
+```yaml
+- hosts: all
+  become: true
+  roles:
+    - role: bilalcaliskan.node_exporter
+      vars:
+        exporter_port: 9092
+        install_node_exporter: true
+        version: 1.0.1
+```
 
-*Inside `vars/main.yml`*:
+You can also override default variables inside [vars/main.yml](vars/main.yml)*:
+```yaml
+version: 1.0.1
+```
 
-        version: 0.18.1
-        download_url: https://github.com/prometheus/node_exporter/releases/download/v{{ version }}/node_exporter-{{ version }}.linux-amd64.tar.gz
-        base_dir_path: /opt
-        file_path: "{{ base_dir_path }}/node_exporter-{{ version }}.linux-amd64.tar.gz"
-        folder_path: "{{ base_dir_path }}/node_exporter-{{ version }}.linux-amd64"
-        port: 9100
-        enable_systemd_collector: true
-        user: node-exporter
-        group: node-exporter
+### Example Playbook File For `Ununinstallation`
 
-## Playbook for uninstall
-
-      - hosts: all
-        become: true
-        vars_files:
-          - vars/main.yml
-        roles:
-          - { role: bilalcaliskan.node_exporter }
-
-*Inside `vars/main.yml`*:
-
+```yaml
+- hosts: all
+  become: true
+  roles:
+    - role: bilalcaliskan.node_exporter
+      vars:
         install_node_exporter: false
+```
 
-## License
+### License
 
 MIT / BSD

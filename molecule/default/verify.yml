@@ -8,5 +8,3 @@
         host: localhost
         port: 9100
         timeout: 5
-
-...
