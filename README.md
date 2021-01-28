@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/bilalcaliskan/node_exporter-ansible-role/workflows/CI/badge.svg?event=push)](https://github.com/bilalcaliskan/node_exporter-ansible-role/actions?query=workflow%3ACI)
 
-Installs and configures node-exporter to expose node metrics to Prometheus on RHEL/CentOS 7/8 instances.
+Installs and configures [Node exporter](https://github.com/prometheus/node_exporter) to expose node metrics to Prometheus.
 
 ## Requirements
 
