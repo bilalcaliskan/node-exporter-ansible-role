@@ -67,9 +67,7 @@
     owner: root
     group: root
     mode: 0644
-  notify:
-    - force systemd to reread configs
-    - start and enable node-exporter
+  notify: start and enable node-exporter
 
 - name: Stop firewalld if desired by user
   service:
