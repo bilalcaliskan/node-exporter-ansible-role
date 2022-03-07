@@ -1,8 +1,8 @@
 ---
 
 install_node_exporter: true
-firewalld_enabled: true
-version: 1.0.1
+firewalld_enabled: false
+version: 1.3.1
 download_url: https://github.com/prometheus/node_exporter/releases/download/v{{ version }}/node_exporter-{{ version }}.linux-amd64.tar.gz
 base_dir_path: /opt
 file_path: "{{ base_dir_path }}/node_exporter-{{ version }}.linux-amd64.tar.gz"
@@ -13,4 +13,3 @@ user: node-exporter
 group: node-exporter
 required_packages:
   - firewalld
-  - vim
